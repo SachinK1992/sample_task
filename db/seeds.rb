@@ -9,16 +9,16 @@
 
 users = ["Tony Stark", "Bruce Banner", "Steve Rogers", "Kooper", "Peter Parker"]
 
-# users.each_with_index do |name, index|
-#   email = "#{name.downcase.gsub(' ', '.')}@fakermail.com"
-#   user = User.create(name: name, email: email, password: "password")
-#
-#   if user
-#     puts "--------Create account--------------#{user.id}"
-#     remain_char = 12 - "PGBNK00#{index}".length
-#     Account.create!(user_id: user.id, number: "#{'0'*remain_char}PGBNK00#{index}", outstanding_balance: 10000)
-#   end
-# end
+users.each_with_index do |name, index|
+  email = "#{name.downcase.gsub(' ', '.')}@fakermail.com"
+  user = User.create(name: name, email: email, password: "password")
+
+  if user
+    puts "--------Create account--------------#{user.id}"
+    remain_char = 12 - "PGBNK00#{index}".length
+    Account.create!(user_id: user.id, number: "#{'0'*remain_char}PGBNK00#{index}", outstanding_balance: 10000)
+  end
+end
 
 Account.all.each do |account|
   [10, 12, 15].sample.times do
