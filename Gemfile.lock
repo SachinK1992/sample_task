@@ -90,6 +90,10 @@ GEM
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    graphiql-rails (1.8.0)
+      railties
+      sprockets-rails
+    graphql (2.0.14)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.5)
@@ -222,6 +226,8 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   devise
+  graphiql-rails
+  graphql
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg (>= 0.18, < 2.0)
