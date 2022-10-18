@@ -3,7 +3,9 @@ class Transaction < ApplicationRecord
   belongs_to :debited_at, foreign_key: :debited_at_id, class_name: "Account"
 
   # validation if account holder has insufficient balance
-  validate :check_balance
+  validates :amount, presence: true, numericality: { greater_than: 0 }
+  validate :check_balance, :validate_credit_and_debit_account_are_different
+
   after_create :debit_balance_from_account
   after_create :credit_balance_into_account
 
@@ -14,7 +16,13 @@ class Transaction < ApplicationRecord
   private
   def check_balance
     if amount.to_f > debited_at.outstanding_balance.to_f
-      errors.add(:amount, "You have insufficient balance.")
+      errors.add(:base, "You have insufficient balance.")
+    end
+  end
+
+  def validate_credit_and_debit_account_are_different
+    if credited_at == debited_at
+      errors.add(:credited_at, "Can not transfer amount to same account.")
     end
   end
 

@@ -1,4 +1,5 @@
 class GraphqlController < ApplicationController
+  skip_before_action :authenticate_user!
   before_action :user_not_signed_in, unless: :user_signed_in?
 
   def execute

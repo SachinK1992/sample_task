@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+  <div class="container"><a href="/" class="navbar-brand">Accounting Software</a>
+    <div class="ms-auto navbar-nav">
+      <% if user_signed_in? %>
+        <span class="navbar-text">
+          Sign Out: <a href="/users/sign_out" data-method="delete" rel="nofollow"><%= current_user.email %></a>
+        </span>
+      <% else %>
+        <a href="/users/sign_in" class="nav-link">Login</a>
+        <a href="/users/sign_up" class="nav-link">Sign Up</a>
+      <% end %>
+    </div>
+  </div>
+</nav>

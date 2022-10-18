@@ -1,0 +1,12 @@
+<% flash.each do |type, msg| %>
+  <% class_name = case type
+    when 'notice'
+      'success'
+    else
+      'danger'
+    end
+  %>
+  <div class="alert alert-<%= class_name %>">
+    <%= msg %>
+  </div>
+<% end %>

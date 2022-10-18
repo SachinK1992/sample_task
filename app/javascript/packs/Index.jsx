@@ -10,10 +10,13 @@ import { ApolloProvider } from "@apollo/client";
 
 document.addEventListener("DOMContentLoaded", () => {
   const client = createApolloClient();
-  const root = createRoot(document.body.appendChild(document.createElement("div")));
-  root.render(
-    <ApolloProvider client={client}>
-      <App/>
-    </ApolloProvider>
-  );
+
+  document.addEventListener('turbolinks:load', () => {
+    const root = createRoot(document.body.appendChild(document.createElement("div")));
+    root.render(
+      <ApolloProvider client={client}>
+        <App/>
+      </ApolloProvider>
+    );
+  })
 });
